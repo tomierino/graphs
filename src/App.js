@@ -1,24 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import {
+  ResponsiveContainer,
+  BarChart,
+  CartesianGrid,
+  XAxis,
+  YAxis,
+  Tooltip,
+  Legend,
+  Bar,
+} from "recharts";
+import "./App.css";
+import { useState } from "react";
+import { Rnd } from "react-rnd";
 
 function App() {
+  const data = [
+    { name: "A", val: 100 },
+    { name: "B", val: 120 },
+    { name: "C", val: 145 },
+  ];
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Rnd
+      className="test"
+      default={{
+        x: 0,
+        y: 0,
+        width: 600,
+        height: 600,
+      }}
+    >
+      <ResponsiveContainer width="100%" height="100%">
+        <BarChart data={data} className="graph-wrapper">
+          <XAxis dataKey="name" />
+          <YAxis />
+          <Legend />
+          <Bar dataKey="val" fill="#8884d8" />
+        </BarChart>
+      </ResponsiveContainer>
+    </Rnd>
   );
 }
 
